@@ -1,4 +1,8 @@
 import express from "express";
+import morgan from "morgan";
+import helmet from "helmet";
+import bodyParser, { urlencoded } from "body-parser";
+import cookieParser from "cookie-parser";
 
 const app = express();
 
@@ -15,12 +19,11 @@ const handleProfile = (req, res) => {
   res.send("Your on my Profile");
 };
 
-const betweenMiddleWare = (req, res, next) => {
-  console.log("Between");
-  next();
-};
-
-app.use(betweenMiddleWare);
+app.use(helmet());
+app.use(morgan("dev"));
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
 app.get("/", handleHome);
 
