@@ -9,7 +9,6 @@ import {
 
 const userRoute = express.Router();
 
-userRoute.get("/", users);
 userRoute.get(routes.editProfile, editProfile);
 userRoute.get(routes.changePassword, changePassword);
 userRoute.get(routes.userDetail, userDetail);
